@@ -9,8 +9,8 @@ namespace BatNav
     {
         // @TODO010 CLASSE
 
-        private Guid Id { get; }
-        private string Pseudo { get; set; }
+        public Guid ID { get; }
+        public string Pseudo { get; set; }
         private DateTime CreationDate { get; set; }
 
         /**
@@ -18,14 +18,14 @@ namespace BatNav
          */
         public Gamer(string pseudo)
         {
-            Id = Guid.NewGuid();
+            ID = Guid.NewGuid();
             Pseudo = pseudo;
             CreationDate = DateTime.UtcNow;
         }
         
         public Gamer(Guid id, string pseudo)
         {
-            Id = id;
+            ID = id;
             Pseudo = pseudo;
             CreationDate = DateTime.UtcNow;
         }

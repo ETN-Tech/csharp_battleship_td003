@@ -16,7 +16,7 @@ namespace BatNav
         public int NbStruck { get; set; }
 
         // nombre de tirs restants pour le joueur
-        int RemainStrike { get; set; }
+        public int RemainStrike { get; set; }
 
         // status du joueur
         public AppDef.PlayerStatus Status { get; set; }
@@ -30,6 +30,18 @@ namespace BatNav
 
         public Player(Guid id, string pseudo) : base(id, pseudo)
         {
+        }
+
+        public Player(string pseudo, int nbStruck, AppDef.PlayerStatus status) : base(pseudo)
+        {
+            NbStruck = nbStruck;
+            Status = status;
+        }
+
+        public Player(string pseudo, Guid id, int nbStruck, AppDef.PlayerStatus status) : base(id, pseudo)
+        {
+            NbStruck = nbStruck;
+            Status = status;
         }
     }	
 }

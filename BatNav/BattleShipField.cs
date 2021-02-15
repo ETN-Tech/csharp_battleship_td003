@@ -48,11 +48,13 @@ namespace BatNav
 		// obtention de l'ID de cette bataille
         public Guid GameID { get => gameID; }
 
-		//@TODO100 EVENT : Gestion d'un évenement de riposte à une tir 
+		//@	TODO100 EVENT : Gestion d'un évenement de riposte à une tir 
 		// STEP1 : Création d'une variable du type event args
-		
-		// compléter ici
-
+		public EventArgs riposteE { get; set; }
+		// création d'un délégué servant de prototype aux fonctions capables de prendre en charge l'évenement
+		public delegate void riposteHandler(Point position, EventArgs e);
+		// création d'une variable de type évenement riposte
+		public event riposteHandler riposteEvent;
 
 		//
         // Liste des joueurs du camp A
@@ -147,11 +149,23 @@ namespace BatNav
 
 		// inscription d'un nouveau joueur allié ou ennemi
 		// @TODO040 LISTES GENERIQUES
-		 public void JoinBattle(Guid gamerID, bool enemy)
-        {
+		 public void JoinBattle(Guid gamerId, bool enemy)
+		 {
+			 Player player = new Player(gamerId, GamesManager.GetGamerPseudo(gamerId));
+			 
 			// compléter ici
+			if (enemy)
+			{
+				playersListB.Add(player);
+			}
+			else
+			{
+				playersListA.Add(player);
+			}
 
-		}
+			// créée une flotte 
+			CreatePlayerFloat(gamerId);
+		 }
 		// calcul d'un cap aléatoire
 		private AppDef.Cap RandomCap()
 		{
@@ -479,10 +493,11 @@ namespace BatNav
 			// Expérimental : risposte à l'aide d'un évenement
 			//@TODO100 EVENT : Gestion d'un évenement de riposte à un tir 
 			// STEP2 : Emission d'un évenement riposte
+			Point position = RandomPos();
+			riposteEvent(position, riposteE);
 
-			
 
-			// résultat du tir
+	// résultat du tir
 			return code;
 		}
 		// Obtention du Status d'un joueur

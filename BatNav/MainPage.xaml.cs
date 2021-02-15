@@ -144,7 +144,9 @@ namespace BatNav
                         //@TODO100 EVENT : Gestion d'un évenement de riposte à un tir 
                         // STEP4 : inscription de la méthode de riposte qui va être activée par l'évenement
                         bSF.riposteEvent +=  HandleRiposte;
-
+                        
+                        // Autre possibilité: On peut utiliser la méthode ProcessStrike à condition de ne pas exécuter
+                        // la riposte à la fin pour ne pas boucler.
                     }
 
                     StartButton.Content = "Stop";
@@ -167,10 +169,12 @@ namespace BatNav
 
         //@TODO100 EVENT : Gestion d'un évenement de riposte à un tir 
         // STEP3 : Création d'une méthode qui peut gérer un évenement riposte
-
-        // Compléter ici
-       
-        // --
+        public static void HandleRiposte(Point position, EventArgs args)
+        {
+            // do whatever you want :
+            SeaElement seaElement = mySea.SeaElements.Find(elt => elt.Pos == position);
+            seaElement.ellipse.Fill= AppDef.redBrush;
+        }
 
         // Pas utilisé pour l'instant 
         private void KeyPressed(object sender, KeyRoutedEventArgs e)

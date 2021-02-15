@@ -59,8 +59,7 @@ namespace BatNav
 			// renvoie l'ID du créateur et l'ID de la partie
 			// @TODO030 TUPLES
 			// Compléter ici
-			//
-			// --
+			return new Tuple<Guid, Guid>(gamerID, _cyberPlayer);
         }
 
 		// obtient une partie par son ID dans la liste des parties
