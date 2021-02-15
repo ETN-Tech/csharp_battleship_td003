@@ -16,7 +16,7 @@ namespace BatNav
 
     public class DateTime
     {
-
+        string UtcNow = ToString();
     }
 
     public class Gamer
