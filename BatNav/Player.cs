@@ -12,8 +12,15 @@ namespace BatNav
 	// @TODO011
     public class Player : Gamer
 	{
-		
-		
-		
-	}	
+
+        // nombre de de tirs ayant touché un bateau
+        public int NbStruck { get; set; }
+
+        // nombre de tirs restants pour le joueur
+        int RemainStrike { get; set; }
+
+        // status du joueur
+        public AppDef.PlayerStatus Status { get; set; }
+
+    }	
 }
