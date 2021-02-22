@@ -29,7 +29,7 @@ namespace BatNav
 			int ellipseHeight = AppDef.hauteurMer /col;
 
 			int leftMargin = 0, rightMargin = 0, topMargin = 0, bottomMargin = 0;
-			Thickness thic = new Thickness(leftMargin, topMargin, rightMargin, bottomMargin);
+			Thickness thick = new Thickness(leftMargin, topMargin, rightMargin, bottomMargin);
 			for ( int r = 0; r < Row; r++)
             {
 				for (int c = 0; c < Col; c++)
@@ -38,11 +38,11 @@ namespace BatNav
 					rightMargin = AppDef.largeurMer - ((c + 1) * ellipseWidth);
 					topMargin = r * ellipseHeight;
 					bottomMargin = AppDef.largeurMer - ((r + 1) * ellipseHeight);
-					thic.Left = leftMargin;
-					thic.Top = topMargin;
-					thic.Right = rightMargin;
-					thic.Bottom = bottomMargin;
-					SeaElement seaElement = new SeaElement(grid, thic, r, c, ellipseWidth, ellipseHeight, 0);
+					thick.Left = leftMargin;
+					thick.Top = topMargin;
+					thick.Right = rightMargin;
+					thick.Bottom = bottomMargin;
+					SeaElement seaElement = new SeaElement(grid, thick, r, c, ellipseWidth, ellipseHeight, 0);
 					SeaElements.Add(seaElement);
 				}
             }

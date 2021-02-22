@@ -317,34 +317,30 @@ namespace BatNav
 		// Création de l'ensemble des bateaux d'un joueur
 		private void CreatePlayerFloat(Guid playerID)
 		{
-			Boat tmpBoat;
-			
-
-			
-				tmpBoat = new Boat("Porte-avions", 5, 0, playerID);
-				SetPostion(tmpBoat);
-				boatList.Add(tmpBoat);
-				//DisplayBoat(tmpBoat);
-				tmpBoat = new Boat("Destroyer", 4, 0, playerID);
-				SetPostion(tmpBoat);
-				boatList.Add(tmpBoat);
-				//DisplayBoat(tmpBoat);
-				tmpBoat = new Boat("Frégate", 3, 0, playerID);
-				SetPostion(tmpBoat);
-				boatList.Add(tmpBoat);
-				//DisplayBoat(tmpBoat);
-				tmpBoat = new Boat("Frégate", 3, 0, playerID);
-				SetPostion(tmpBoat);
-				boatList.Add(tmpBoat);
-				//DisplayBoat(tmpBoat);
-				tmpBoat = new Boat("Sous-Marin", 2, 0, playerID);
-				SetPostion(tmpBoat);
-				boatList.Add(tmpBoat);
-				//DisplayBoat(tmpBoat);
-				tmpBoat = new Boat("Sous-Marin", 2, 0, playerID);
-				SetPostion(tmpBoat);
-				boatList.Add(tmpBoat);
-				//DisplayBoat(tmpBoat);
+			Boat tmpBoat = new Boat("Porte-avions", 5, 0, playerID);
+			SetPostion(tmpBoat);
+			boatList.Add(tmpBoat);
+			//DisplayBoat(tmpBoat);
+			tmpBoat = new Boat("Destroyer", 4, 0, playerID);
+			SetPostion(tmpBoat);
+			boatList.Add(tmpBoat);
+			//DisplayBoat(tmpBoat);
+			tmpBoat = new Boat("Frégate", 3, 0, playerID);
+			SetPostion(tmpBoat);
+			boatList.Add(tmpBoat);
+			//DisplayBoat(tmpBoat);
+			tmpBoat = new Boat("Frégate", 3, 0, playerID);
+			SetPostion(tmpBoat);
+			boatList.Add(tmpBoat);
+			//DisplayBoat(tmpBoat);
+			tmpBoat = new Boat("Sous-Marin", 2, 0, playerID);
+			SetPostion(tmpBoat);
+			boatList.Add(tmpBoat);
+			//DisplayBoat(tmpBoat);
+			tmpBoat = new Boat("Sous-Marin", 2, 0, playerID);
+			SetPostion(tmpBoat);
+			boatList.Add(tmpBoat);
+			//DisplayBoat(tmpBoat);
 			
 		}
 
@@ -375,10 +371,12 @@ namespace BatNav
 				strikeElt.RegenCycles = AppDef.regenCyclesInitialCredit;
 				//@TODO200
 				// si l'élément de mer impacté a déjà été ajouté alors ne plus l'ajouter dans cette liste.
-				// compléter ici
-				
+				var find = impactedSeaElements.Where(seaElt => seaElt == strikeElt);
 
-				// -- 
+				if (!find.Any())
+				{
+					impactedSeaElements.TryAdd(strikeElt);
+				}
 
 			}
 			// Recherche d'un impact sur un bateau
